@@ -11,8 +11,8 @@ dayOfWeek getNextDay(dayOfWeek today) {
     return dayOfWeek(todayInt + 1); 
 }
 
-void printDay(dayOfWeek nextday) {
-    switch (nextDay) {
+void printDay(dayOfWeek day) {
+    switch (day) {
         case dayOfWeek::Monday: 
         cout << "Monday"; 
         break;
@@ -50,6 +50,6 @@ int main() {
     dayOfWeek today = dayOfWeek(today);
     dayOfWeek nextDay = getNextDay(nextDay);
 
-    cout << "The next day is: " << printDay(nextDay) << endl;
+    cout << "The next day is: " << printDay(day) << endl;
 return 0;
 }

@@ -12,31 +12,34 @@ void sortArray(int array[], int n) {
         }
     }
 }
-
 int findLongestConsecutive(int array[], int n) {
-    if (n == 0) return 0;
     sortArray(array, n);
-    int longestStreak = 1, currentStreak = 1;
+
+    int longestStreak = 1;
+    int currentStreak = 1;
 
     for (int i = 1; i < n; i++) {
         if (array[i] == array[i - 1]) {
-            continue;
+            continue; 
         } else if (array[i] == array[i - 1] + 1) {
             currentStreak++;
         } else {
             if (currentStreak > longestStreak) {
                 longestStreak = currentStreak;
             }
-            currentStreak = 1;
+            currentStreak = 1; 
         }
     }
+    if (currentStreak > longestStreak) {
+        longestStreak = currentStreak;
+    }
 
-    return (currentStreak > longestStreak) ? currentStreak : longestStreak;
+return longestStreak;
 }
 
 int main() {
     int array[] = {100, 4, 200, 1, 3, 2};
     int n = 6;
     cout << "Longest consecutive sequence length: " << findLongestConsecutive(array, n) << endl;
-    return 0;
+return 0;
 }
