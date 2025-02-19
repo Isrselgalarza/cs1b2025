@@ -23,4 +23,5 @@ int main (){
     sortArray(array);
     printArray(array);
 
+return 0;
 }
