@@ -3,15 +3,20 @@ using namespace std;
 
 enum class dayOfWeek {monday, tuesday, wednesday, thursday, friday, saturday, sunday};
 
-void printNextDay (int num){
+vid printNextDay (dayOfWeek day){
 
+    
 }
 
 int main(){
 
-    int num;
+    int day;
 
     cout << "Enter a day using a number" << endl;
+
+    cin >> day;
+
+    printNextDay(num);
 
 
 }
