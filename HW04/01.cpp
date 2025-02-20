@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-enum class dayOfWeek { Monday = 1, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday};
+enum class dayOfWeek { Monday = 1, Tuesday = 2, Wednesday = 3, Thursday = 4, Friday = 5 , Saturday = 6, Sunday = 7};
 
 dayOfWeek getNextDay(dayOfWeek today) {
     int todayInt = int(today);
@@ -39,11 +39,11 @@ void printDay(dayOfWeek day) {
 
 int main() {
     int todayNum;
-    cout << "Enter the current day (1 for Monday, 2 for Tuesday, ..., 7 for Sunday): ";
+    cout << "Enter a number for a day ";
     cin >> todayNum;
 
     if (todayNum < 1 || todayNum > 7) {
-        cout << "Invalid input! Please enter a number between 1 and 7." << endl;
+        cout << "enter a number between 1-7." << endl;
         return 1;
     }
 
