@@ -1,38 +1,78 @@
-#include<iostream>
-#include <fstream>
-using namespace std;
+#include<iostream> 
+#include<fstream> 
+using namespace std; 
 
-struct Node {
-    int val;
-    Node* next;
+struct Node { 
+    int val; 
+    Node* next; 
 };
 
-void addToTheEnd(Node*& p, int val){
-    Node* newNode = new Node{val, nullptr};
-    if(p == nullptr){
-        p = newNode;
-        return;
+void addToTheEnd(Node*& p, int val) {
+    Node* newNode = new Node {val, nullptr}; 
+    if (p == nullptr) { 
+        p = newNode; 
+        return; 
     }
-    Node* temp = p;
-    while(*temp->next != nullptr){
-        temp = temp->next; //temp = (*temp).next;
+    Node* temp = p; 
+    while(temp->next != nullptr) { 
+        temp = temp->next;   // temp = (*temp).next; 
     }
-    temp->next = newNode;
-
+    temp->next = newNode; 
 }
 
-Node* readListtFromFile(string fn = "p0.txt"){
-    ifstream f(fn);
-    Node* h = nullptr;
-    while(!f.eof()){
-        int x;
-        f >> x;
-        addToTheEnd(h, x);
+Node* readListFromFile(string fn = "p0.txt") { 
+    ifstream f(fn); 
+    Node* h = nullptr; 
+    while(!f.eof()) { 
+        int x; 
+        f >> x; 
+        addToTheEnd(h, x); 
     }
-    return h;
+    f.close();
+    return h; 
 }
 
-int main(){
-    Node* head = nullptr;
+void printList(Node* head) { 
+    while(head != nullptr) { 
+        cout << head->val << " "; 
+        head = head->next;  // head = (*head).next
+    }
+    cout << endl; 
+}
+
+void deleteByValue(Node*& h, int val) { 
+    if (h == nullptr) { return; }
+
+    if (h->val == val) {
+        Node* t = h; 
+        h = h->next; 
+        delete t; 
+        return; 
+    }
+
+    Node* t = h; 
+    while(t->next != nullptr && t->next->val != val) { 
+        t = t->next;
+    }
+
+    if (t->next == nullptr) { return; }
+    Node *toDelete = t->next; 
+    (*t).next = t->next->next; 
+    delete toDelete; 
+}
+
+int main() { 
+    Node* head = nullptr; 
     head = readListFromFile();
+    printList(head);
+    while(true) {
+        int x; 
+        cout << "Enter a value to delete from the list: ";
+        cin >> x; 
+        if (x == -1) { 
+            break; 
+        }
+        deleteByValue(head, x); 
+        printList(head);
+    }
 }
