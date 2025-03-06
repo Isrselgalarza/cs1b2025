@@ -61,9 +61,6 @@ void deleteByValue(Node*& h, int val) {
     delete toDelete; 
 }
 
-
-
-
 int main() { 
     Node* head = nullptr; 
     head = readListFromFile();
@@ -77,7 +74,5 @@ int main() {
         }
         deleteByValue(head, x); 
         printList(head);
-        findMiddleNode(head, x)
     }
 }
-    
